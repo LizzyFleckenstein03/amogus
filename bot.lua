@@ -10,7 +10,7 @@ function amogus.urlencode(url)
 end
 
 function amogus.parse_message(player, message, discord)
-	if player ~= minetest.localplayer:get_name() then
+	if player ~= minetest.localplayer:get_name() and message:sub(1, 1) ~= "!" then
 		http.fetch({url = "http://localhost:6969?message=" .. amogus.urlencode(message), timeout = 100}, function(res)
 			if res.succeeded then
 				minetest.send_chat_message(res.data)
